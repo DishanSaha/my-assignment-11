@@ -1,14 +1,43 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import Logo from "./Logo";
 
 export default function Navbar() {
     const navLinks = (
         <>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/products">All Products</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+            <li>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) => isActive ? "text-primary font-semibold border-b-2 border-primary" : "text-black font-semibold"}
+                >
+                    Home
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="/products"
+                    className={({ isActive }) => isActive ? "text-primary font-semibold border-b-2 border-primary" : "text-black font-semibold"}
+                >
+                    All Products
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="/about"
+                    className={({ isActive }) => isActive ? "text-primary font-semibold border-b-2 border-primary" : "text-black font-semibold"}
+                >
+                    About Us
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to="/contact"
+                    className={({ isActive }) => isActive ? "text-primary font-semibold border-b-2 border-primary" : "text-black font-semibold"}
+                >
+                    Contact
+                </NavLink>
+            </li>
+
         </>
     );
 
@@ -41,7 +70,9 @@ export default function Navbar() {
                 </div>
 
                 {/* Logo---- */}
-                <Logo/>
+                <Link to='/'>
+                    <Logo />
+                </Link>
             </div>
 
             {/* CENTER — Desktop Menu */}
@@ -52,18 +83,15 @@ export default function Navbar() {
             {/* RIGHT — empty or future icons */}
             <div className="navbar-end flex lg:flex-row lg:gap-2">
                 {/* Login button — visible everywhere */}
-                <button className="btn btn-primary lg:w-auto">
+                <Link className="btn btn-primary lg:w-auto">
                     Login
-                </button>
+                </Link>
 
-                {/* Register button — hidden on mobile, visible on tablet and desktop */}
-                <button className="btn btn-secondary hidden md:inline-flex lg:w-auto">
+                {/* Register Link — hidden on mobile, visible on tablet and desktop */}
+                <Link className="btn btn-secondary hidden md:inline-flex lg:w-auto">
                     Register
-                </button>
+                </Link>
             </div>
-
-
-
         </div>
     );
 }
