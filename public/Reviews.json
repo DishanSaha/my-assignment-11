@@ -1,0 +1,58 @@
+[
+    {
+        "id": "5f47ac10b4f1c03e8c123456",
+        "userName": "John Doe",
+        "ratings": 4.5,
+        "review": "Orders are tracked smoothly, and production updates are clear.",
+        "user_photoURL": "https://randomuser.me/api/portraits/men/10.jpg"
+    },
+    {
+        "id": "5f47ac10b4f1c03e8c234567",
+        "userName": "Jane Smith",
+        "ratings": 3.8,
+        "review": "Production took a bit longer than expected, but the system kept me informed.",
+        "user_photoURL": "https://randomuser.me/api/portraits/women/25.jpg"
+    },
+    {
+        "id": "5f47ac10b4f1c03e8c345678",
+        "userName": "Alex Brown",
+        "ratings": 5.0,
+        "review": "Excellent order tracking! I always know exactly where my garments are.",
+        "user_photoURL": "https://randomuser.me/api/portraits/men/34.jpg"
+    },
+    {
+        "id": "5f47ac10b4f1c03e8c456789",
+        "userName": "Lisa White",
+        "ratings": 4.2,
+        "review": "Very responsive system. Production updates are accurate and helpful.",
+        "user_photoURL": "https://randomuser.me/api/portraits/women/12.jpg"
+    },
+    {
+        "id": "5f47ac10b4f1c03e8c567890",
+        "userName": "David Lee",
+        "ratings": 2.9,
+        "review": "Some orders were delayed and updates were missing. Needs improvement.",
+        "user_photoURL": "https://randomuser.me/api/portraits/men/19.jpg"
+    },
+    {
+        "id": "5f47ac10b4f1c03e8c678901",
+        "userName": "Nina Khan",
+        "ratings": 4.9,
+        "review": "Superb system! Keeps me informed on every step of production and delivery.",
+        "user_photoURL": "https://randomuser.me/api/portraits/women/8.jpg"
+    },
+    {
+        "id": "5f47ac10b4f1c03e8c789012",
+        "userName": "Michael Jordan",
+        "ratings": 3.3,
+        "review": "Decent tracking, but production stage details could be more detailed.",
+        "user_photoURL": "https://randomuser.me/api/portraits/men/22.jpg"
+    },
+    {
+        "id": "5f47ac10b4f1c03e8c890123",
+        "userName": "Emma Watson",
+        "ratings": 4.7,
+        "review": "Fast and accurate production updates. Very reliable for garment orders.",
+        "user_photoURL": "https://randomuser.me/api/portraits/women/5.jpg"
+    }
+]
