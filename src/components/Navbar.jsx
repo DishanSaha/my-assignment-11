@@ -83,12 +83,12 @@ export default function Navbar() {
             {/* RIGHT — empty or future icons */}
             <div className="navbar-end flex lg:flex-row lg:gap-2">
                 {/* Login button — visible everywhere */}
-                <Link className="btn btn-primary lg:w-auto">
+                <Link to='/login' className="btn btn-primary lg:w-auto">
                     Login
                 </Link>
 
                 {/* Register Link — hidden on mobile, visible on tablet and desktop */}
-                <Link className="btn btn-secondary hidden md:inline-flex lg:w-auto">
+                <Link to='/register' className="btn btn-secondary hidden md:inline-flex lg:w-auto">
                     Register
                 </Link>
             </div>

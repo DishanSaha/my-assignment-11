@@ -6,7 +6,7 @@ import { Link } from "react-router";
 import { motion } from "framer-motion";
 
 
-export default function RegisterPage() {
+export default function Register() {
     const {
         register,
         // handleSubmit,

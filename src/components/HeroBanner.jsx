@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 export default function HeroBanner() {
-    useEffect(() => {
-        const img = new Image();
-        img.src = 'https://i.ibb.co.com/3mzzHrRy/2303-i039-019-F-m004-c9-sustainable-clothes-slow-fashion-isometric.jpg'
-    }, [])
+    // useEffect(() => {
+    //     const img = new Image();
+    //     img.src = 'https://i.ibb.co.com/3mzzHrRy/2303-i039-019-F-m004-c9-sustainable-clothes-slow-fashion-isometric.jpg'
+    // }, [])
 
     return (
-        <section className="relative my-10 bg-primary">
+        <section className="relative my-10 bg-primary/80">
             <div className="max-w-7xl mx-auto px-4 py-16 lg:py-0 h-full flex flex-col lg:flex-row items-center lg:items-stretch gap-8">
 
                 {/* Left Side: Content */}
@@ -41,7 +41,7 @@ export default function HeroBanner() {
                     >
                         <motion.a
                             href="/products"
-                            className="bg-[#9B5DE0] hover:bg-[#4E56C0] text-white font-semibold px-6 py-3 rounded-md transition duration-300"
+                            className="bg-[#7700fe] hover:bg-[#4E56C0] text-white font-semibold px-6 py-3 rounded-md transition duration-300"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -49,7 +49,7 @@ export default function HeroBanner() {
                         </motion.a>
                         <motion.a
                             href="/contact"
-                            className="bg-transparent border-2 border-[#9B5DE0] text-[#9B5DE0] hover:bg-[#9B5DE0] hover:text-white font-semibold px-6 py-3 rounded-md transition duration-300"
+                            className="bg-transparent border-2 border-[#7700fe] text-[#7700fe] hover:bg-[#7700fe] hover:text-white font-semibold px-6 py-3 rounded-md transition duration-300"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                         >
@@ -58,15 +58,19 @@ export default function HeroBanner() {
                     </motion.div>
                 </div>
 
-                {/* Right Side: Image */}
-                <div className="lg:w-1/2 relative h-80 lg:h-full">
-                    <img
-                        src="https://i.ibb.co.com/3mzzHrRy/2303-i039-019-F-m004-c9-sustainable-clothes-slow-fashion-isometric.jpg"
-                        alt="Hero Banner"
-                        className="w-full h-full object-cover rounded-4xl shadow-lg"
+
+                {/* VIDEO SECTION */}
+                <div className=" md:flex items-center justify-center p-6 order-1 md:order-2">
+                    <motion.video
+                        src="/src/assets/i3Yn4O089ntH173iD4.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        className="rounded-3xl w-full lg:h-[500px] h-[300px] object-cover shadow-lg"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.2 }}
                     />
-                    {/* Optional Overlay */}
-                    <div className="absolute inset-0  bg-opacity-20 rounded-lg"></div>
                 </div>
 
             </div>

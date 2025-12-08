@@ -7,7 +7,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { Link } from "react-router";
 
 
-export default function LoginPage() {
+export default function Login() {
     const {
         register,
         // handleSubmit,
