@@ -1,8 +1,20 @@
 import React from "react";
 import { Link, NavLink } from "react-router";
 import Logo from "./Logo";
+import UseAuth from "../hooks/UseAuth";
 
 export default function Navbar() {
+
+    const { user, signOutUser } = UseAuth();
+
+    const handleLogout = () => {
+        signOutUser()
+            .then()
+            .catch((error) => {
+                console.log(error)
+            })
+    }
+
     const navLinks = (
         <>
             <li>
@@ -15,7 +27,7 @@ export default function Navbar() {
             </li>
             <li>
                 <NavLink
-                    to="/products"
+                    to="/all-products"
                     className={({ isActive }) => isActive ? "text-primary font-semibold border-b-2 border-primary" : "text-black font-semibold"}
                 >
                     All Products
@@ -83,9 +95,23 @@ export default function Navbar() {
             {/* RIGHT — empty or future icons */}
             <div className="navbar-end flex lg:flex-row lg:gap-2">
                 {/* Login button — visible everywhere */}
-                <Link to='/login' className="btn btn-primary lg:w-auto">
-                    Login
-                </Link>
+                {
+                    user ?
+                        <button
+                            onClick={handleLogout}
+                            className="btn font-semibold text-white 
+  bg-gradient-to-r from-[#9B5DE0] via-[#D78FEE] to-[#eca7e7] 
+  hover:from-[#8a4fd6] hover:via-[#cf7eec] hover:to-[#f7bfff]
+  shadow-lg hover:shadow-purple-300/40"
+                        >
+                            <span>Logout</span>
+                        </button>
+
+                        :
+                        <Link to='/login' className="btn btn-primary lg:w-auto">
+                            Login
+                        </Link>
+                }
 
                 {/* Register Link — hidden on mobile, visible on tablet and desktop */}
                 <Link to='/register' className="btn btn-secondary hidden md:inline-flex lg:w-auto">

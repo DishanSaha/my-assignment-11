@@ -4,17 +4,71 @@ import { toast, Toaster } from "react-hot-toast";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { Link } from "react-router";
-
+import { Link, useLocation, useNavigate } from "react-router";
+import UseAuth from "../../hooks/UseAuth";
+import Swal from "sweetalert2";
 
 export default function Login() {
+    const { signInUser, signInGoogle } = UseAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
     const {
         register,
-        // handleSubmit,
+        handleSubmit,
         formState: { errors },
     } = useForm();
 
     const [showPassword, setShowPassword] = useState(false);
+
+    const handleGoogleLogin = () => {
+        signInGoogle()
+            .then(result => {
+                console.log(result.user)
+
+                Swal.fire({
+                    title: "Login Successful!",
+                    text: "Welcome back to TexTrack",
+                    icon: "success",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                // const userInfo = {
+                //     email: result.user.email,
+                //     name: result.user.displayName,
+                //     photoURL: result.user.photoURL
+                // }
+
+                // axiosSecure.post('/users', userInfo)
+                //     .then(res => {
+                //         console.log('user data has been stored', res.data);
+                //         navigate(location.state || '/')
+                //     })
+
+            })
+            .catch(error => {
+                console.log(error);
+                Swal.fire({
+                    title: "Login Failed!",
+                    text: "Something went wrong. Please try again.",
+                    icon: "error",
+                    confirmButtonText: "Okay"
+                })
+            })
+    }
+
+    const handleSubmitLogin = (data) => {
+        console.log(data);
+        signInUser(data.email, data.password)
+            .then(result => {
+                console.log(result.user)
+                navigate(location.state || '/')
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+    // Forgot password----
 
     return (
         <>
@@ -38,7 +92,9 @@ export default function Login() {
                     <div className="w-full max-w-md bg-white rounded-3xl shadow-lg p-8">
                         <h2 className="text-3xl font-bold text-center mb-6">Login</h2>
 
-                        <form className="space-y-5">
+                        <form
+                            onSubmit={handleSubmit(handleSubmitLogin)}
+                            className="space-y-5">
                             {/* Email */}
                             <div>
                                 <label className="block mb-1 font-semibold">Email</label>
@@ -101,7 +157,9 @@ export default function Login() {
                         </div>
 
                         {/* Google Login */}
-                        <button className="w-full border border-gray-300 rounded-md py-2 flex items-center justify-center gap-2 hover:bg-gray-100 transition">
+                        <button
+                            onClick={handleGoogleLogin}
+                            className="w-full border border-gray-300 rounded-md py-2 flex items-center justify-center gap-2 hover:bg-gray-100 transition">
                             <img
                                 src="https://www.svgrepo.com/show/355037/google.svg"
                                 className="w-5 h-5"

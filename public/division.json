@@ -1,0 +1,218 @@
+[
+  {
+    "_id": "p1",
+    "name": "Men's Cotton T-Shirt",
+    "category": "T-Shirt",
+    "price": 12.99,
+    "quantity": 120,
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+    "description": "Premium cotton t-shirt for everyday comfort."
+  },
+  {
+    "_id": "p2",
+    "name": "Women's Casual Top",
+    "category": "Top",
+    "price": 15.49,
+    "quantity": 90,
+    "image": "https://images.unsplash.com/photo-1520975916090-3105956dac38",
+    "description": "Lightweight casual top for daily wear."
+  },
+  {
+    "_id": "p3",
+    "name": "Denim Jeans",
+    "category": "Jeans",
+    "price": 29.99,
+    "quantity": 75,
+    "image": "https://images.unsplash.com/photo-1542272604-787c3835535d",
+    "description": "Classic blue denim jeans."
+  },
+  {
+    "_id": "p4",
+    "name": "Formal Shirt",
+    "category": "Shirt",
+    "price": 24.99,
+    "quantity": 60,
+    "image": "https://images.unsplash.com/photo-1603252109303-2751441dd157",
+    "description": "Office-ready formal shirt."
+  },
+  {
+    "_id": "p5",
+    "name": "Hooded Jacket",
+    "category": "Jacket",
+    "price": 49.99,
+    "quantity": 40,
+    "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5",
+    "description": "Warm hooded jacket for winter."
+  },
+  {
+    "_id": "p6",
+    "name": "Sports Shorts",
+    "category": "Shorts",
+    "price": 14.99,
+    "quantity": 100,
+    "image": "https://images.unsplash.com/photo-1593032465171-cb4f1e6d75f3",
+    "description": "Comfortable sports shorts."
+  },
+  {
+    "_id": "p7",
+    "name": "Polo Shirt",
+    "category": "T-Shirt",
+    "price": 18.99,
+    "quantity": 85,
+    "image": "https://images.unsplash.com/photo-1607345366928-199ea26cfe3e",
+    "description": "Smart casual polo shirt."
+  },
+  {
+    "_id": "p8",
+    "name": "Women's Skirt",
+    "category": "Skirt",
+    "price": 22.50,
+    "quantity": 55,
+    "image": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1",
+    "description": "Elegant skirt for women."
+  },
+  {
+    "_id": "p9",
+    "name": "Sweatshirt",
+    "category": "Sweater",
+    "price": 27.99,
+    "quantity": 65,
+    "image": "https://images.unsplash.com/photo-1618354691373-d851c5c3a990",
+    "description": "Soft fleece sweatshirt."
+  },
+  {
+    "_id": "p10",
+    "name": "Cargo Pants",
+    "category": "Pants",
+    "price": 32.99,
+    "quantity": 50,
+    "image": "https://images.unsplash.com/photo-1617331721458-bd3bd3f9c7b4",
+    "description": "Durable cargo pants."
+  },
+  {
+    "_id": "p11",
+    "name": "Women's Blouse",
+    "category": "Blouse",
+    "price": 19.99,
+    "quantity": 70,
+    "image": "https://images.unsplash.com/photo-1525507119028-ed4c629a60a3",
+    "description": "Stylish women’s blouse."
+  },
+  {
+    "_id": "p12",
+    "name": "Men's Suit",
+    "category": "Formal",
+    "price": 120.00,
+    "quantity": 20,
+    "image": "https://images.unsplash.com/photo-1592878904946-b3cd8ae243d0",
+    "description": "Premium formal suit."
+  },
+  {
+    "_id": "p13",
+    "name": "Kurti",
+    "category": "Traditional",
+    "price": 25.99,
+    "quantity": 80,
+    "image": "https://images.unsplash.com/photo-1618354691210-d2b2f2c61d2a",
+    "description": "Traditional kurti for women."
+  },
+  {
+    "_id": "p14",
+    "name": "Leather Jacket",
+    "category": "Jacket",
+    "price": 89.99,
+    "quantity": 30,
+    "image": "https://images.unsplash.com/photo-1520974735194-8cbdbe27ca35",
+    "description": "Premium leather jacket."
+  },
+  {
+    "_id": "p15",
+    "name": "Winter Coat",
+    "category": "Coat",
+    "price": 99.99,
+    "quantity": 25,
+    "image": "https://images.unsplash.com/photo-1514996937319-344454492b37",
+    "description": "Heavy winter coat."
+  },
+  {
+    "_id": "p16",
+    "name": "Sleeveless Top",
+    "category": "Top",
+    "price": 13.99,
+    "quantity": 95,
+    "image": "https://images.unsplash.com/photo-1564584217132-2271feaeb3c5",
+    "description": "Comfortable sleeveless top."
+  },
+  {
+    "_id": "p17",
+    "name": "Track Pants",
+    "category": "Sportswear",
+    "price": 21.99,
+    "quantity": 110,
+    "image": "https://images.unsplash.com/photo-1593032457860-9c1e5d6b5b24",
+    "description": "Breathable track pants."
+  },
+  {
+    "_id": "p18",
+    "name": "Casual Dress",
+    "category": "Dress",
+    "price": 34.99,
+    "quantity": 45,
+    "image": "https://images.unsplash.com/photo-1539008835657-9e8e9680c956",
+    "description": "Elegant casual dress."
+  },
+  {
+    "_id": "p19",
+    "name": "Kids T-Shirt",
+    "category": "Kids Wear",
+    "price": 9.99,
+    "quantity": 130,
+    "image": "https://images.unsplash.com/photo-1607453998774-d533f65dac99",
+    "description": "Soft kids cotton t-shirt."
+  },
+  {
+    "_id": "p20",
+    "name": "Kids Jacket",
+    "category": "Kids Wear",
+    "price": 29.99,
+    "quantity": 40,
+    "image": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf",
+    "description": "Warm jacket for kids."
+  },
+  {
+    "_id": "p21",
+    "name": "Office Blazer",
+    "category": "Formal",
+    "price": 65.00,
+    "quantity": 35,
+    "image": "https://images.unsplash.com/photo-1591047139829-d91aecb6caea",
+    "description": "Professional office blazer."
+  },
+  {
+    "_id": "p22",
+    "name": "Cotton Pajama",
+    "category": "Sleepwear",
+    "price": 17.99,
+    "quantity": 90,
+    "image": "https://images.unsplash.com/photo-1585386959984-a41552231692",
+    "description": "Comfortable cotton pajama."
+  },
+  {
+    "_id": "p23",
+    "name": "Rain Jacket",
+    "category": "Outerwear",
+    "price": 39.99,
+    "quantity": 50,
+    "image": "https://images.unsplash.com/photo-1542060748-10c28b62716c",
+    "description": "Waterproof rain jacket."
+  },
+  {
+    "_id": "p24",
+    "name": "Fashion Scarf",
+    "category": "Accessories",
+    "price": 11.99,
+    "quantity": 140,
+    "image": "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb",
+    "description": "Stylish fashion scarf."
+  }
+]

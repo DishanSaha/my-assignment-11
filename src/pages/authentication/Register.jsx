@@ -2,31 +2,82 @@ import { useForm } from "react-hook-form";
 import { toast, Toaster } from "react-hot-toast";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { motion } from "framer-motion";
+import UseAuth from "../../hooks/UseAuth";
+import axios from "axios";
 
 
 export default function Register() {
     const {
         register,
-        // handleSubmit,
+        handleSubmit,
         formState: { errors },
 
     } = useForm();
 
     const [showPassword, setShowPassword] = useState(false);
 
-    // Submit Handler
-    // const onSubmit = (data) => {
-    //     console.log(data);
+    const { registerUser, updateUserProfile } = UseAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+    // const axiosSecure = UseAxios();
 
-    //     toast.success("Registration Successful!", {
-    //         position: "top-center",
-    //     });
+    const handleRegister = (data) => {
+        console.log(data.photo[0]);
+        const profileImage = data.photo[0];
 
-    //     reset();
-    // };
 
+        registerUser(data.email, data.password)
+            .then(result => {
+                console.log(result.user)
+                toast.success("Registration successful");
+
+                // 1.store the image in formdata---
+
+                const formData = new FormData();
+                formData.append('image', profileImage);
+
+                // 2.send the photo to store and get the url----
+                const image_API_URL = `https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.VITE_image_host_key}`
+                axios.post(image_API_URL, formData)
+                    .then(res => {
+                        const photoURL = res.data.data.url;
+
+                        // create user in the database----
+
+                        // const userInfo = {
+                        //     email: data.email,
+                        //     name: data.name,
+                        //     photoURL: photoURL
+                        // }
+                        // axiosSecure.post('/users', userInfo)
+                        //     .then(res => {
+                        //         if (res.data.insertedId) {
+                        //             console.log('user created in db')
+                        //         }
+                        // })
+
+                        // update user profile to firebase----
+
+                        const userProfile = {
+                            displayName: data.name,
+                            photoURL: res.data.data.url
+                        };
+                        updateUserProfile(userProfile)
+                            .then(() => {
+                                console.log('user profile updated');
+                                navigate(location.state || '/');
+                            })
+                            .catch(e => { console.log(e) });
+                    })
+            })
+            .catch(error => {
+                console.log(error);
+                toast.error(error.message);
+            })
+
+    }
     return (
         <>
             <Toaster />
@@ -54,7 +105,9 @@ export default function Register() {
 
                             <h2 className="text-3xl font-bold text-center mb-6">Register Now</h2>
 
-                            <form className="space-y-5">
+                            <form
+                                onSubmit={handleSubmit(handleRegister)}
+                                className="space-y-5">
                                 {/* Name */}
                                 <div>
                                     <label className="block mb-1 font-semibold">Name</label>

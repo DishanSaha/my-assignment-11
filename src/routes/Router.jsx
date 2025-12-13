@@ -5,6 +5,9 @@ import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/authentication/Login";
 import Register from "../pages/authentication/Register";
 import ErrorPage from "../components/ErrorPage";
+import AboutUs from "../pages/AboutUs";
+import Contact from "../pages/Contact";
+import AllProducts from "../pages/products/AllProducts";
 
 
 export const router = createBrowserRouter([
@@ -20,6 +23,12 @@ export const router = createBrowserRouter([
         ]
     },
     {
+        path: '/all-products',
+        element: <AllProducts />,
+        loader: () => fetch('/public/division.json')
+            .then(res => res.json())
+    },
+    {
         path: '/',
         element: <AuthLayout />,
         children: [
@@ -32,5 +41,15 @@ export const router = createBrowserRouter([
                 element: <Register />
             }
         ]
+    },
+    {
+        path: '/about',
+        element: <AboutUs />
+    },
+    {
+        path: '/contact',
+        element: <Contact />,
+        loader: () => fetch('/public/warehouses.json')
+            .then(res => res.json())
     }
 ]);
