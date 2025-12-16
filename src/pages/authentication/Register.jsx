@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { motion } from "framer-motion";
 import UseAuth from "../../hooks/UseAuth";
 import axios from "axios";
+import UseAxios from "../../hooks/UseAxios";
 
 
 export default function Register() {
@@ -21,7 +22,7 @@ export default function Register() {
     const { registerUser, updateUserProfile } = UseAuth();
     const location = useLocation();
     const navigate = useNavigate();
-    // const axiosSecure = UseAxios();
+    const axiosSecure = UseAxios();
 
     const handleRegister = (data) => {
         console.log(data.photo[0]);
@@ -29,8 +30,8 @@ export default function Register() {
 
 
         registerUser(data.email, data.password)
-            .then(result => {
-                console.log(result.user)
+            .then(async (result) => {
+                const user = result.user;
                 toast.success("Registration successful");
 
                 // 1.store the image in formdata---
@@ -40,38 +41,45 @@ export default function Register() {
 
                 // 2.send the photo to store and get the url----
                 const image_API_URL = `https://api.imgbb.com/1/upload?expiration=600&key=${import.meta.env.VITE_image_host_key}`
-                axios.post(image_API_URL, formData)
-                    .then(res => {
-                        const photoURL = res.data.data.url;
+                const images = await axios.post(image_API_URL, formData)
+                const photoURL = images.data.data.url;
 
-                        // create user in the database----
+                // update user profile to firebase----
+                const userProfile = {
+                    displayName: data.name,
+                    photoURL: photoURL
+                };
 
-                        // const userInfo = {
-                        //     email: data.email,
-                        //     name: data.name,
-                        //     photoURL: photoURL
-                        // }
-                        // axiosSecure.post('/users', userInfo)
-                        //     .then(res => {
-                        //         if (res.data.insertedId) {
-                        //             console.log('user created in db')
-                        //         }
-                        // })
+                // Send user info to your backend---
+                const userInfo = {
+                    email: data.email,
+                    name: data.name,
+                    photoURL: photoURL,
+                    role: "buyer",
+                    status: "pending",
+                }
 
-                        // update user profile to firebase----
+                const token = await user.getIdToken(); // firebase JWT
+                const res = await axiosSecure.post("/users", userInfo, {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
 
-                        const userProfile = {
-                            displayName: data.name,
-                            photoURL: res.data.data.url
-                        };
-                        updateUserProfile(userProfile)
-                            .then(() => {
-                                console.log('user profile updated');
-                                navigate(location.state || '/');
-                            })
-                            .catch(e => { console.log(e) });
+                if (res.data.insertedId) {
+                    console.log("User created in DB");
+                }
+
+                // Navigate after registration
+                navigate(location.state?.from || "/");
+
+
+                updateUserProfile(userProfile)
+                    .then(() => {
+                        console.log('user profile updated');
+                        navigate(location.state || '/');
                     })
+                    .catch(e => { console.log(e) });
             })
+
             .catch(error => {
                 console.log(error);
                 toast.error(error.message);
@@ -156,10 +164,8 @@ export default function Register() {
                                         className="w-full p-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     >
                                         <option value="">Select Role</option>
-                                        <option value="admin">Admin</option>
+                                        <option value="buyer">Buyer</option>
                                         <option value="manager">Manager</option>
-                                        <option value="operator">Operator</option>
-                                        <option value="viewer">Viewer</option>
                                     </select>
                                     {errors.role && (
                                         <p className="text-red-500 text-sm mt-1">{errors.role.message}</p>

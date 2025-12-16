@@ -20,7 +20,9 @@ export default function AllProducts() {
                             <motion.div
                                 key={product._id}
                                 className="bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col cursor-pointer"
-                                whileHover={{ scale: 1.05, boxShadow: "0px 10px 30px rgba(0,0,0,0.2)" }}
+                                whileHover={{
+                                    boxShadow: "0px 12px 35px rgba(155, 93, 224, 0.45)"
+                                }}
                                 whileTap={{ scale: 0.98 }}
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -37,7 +39,7 @@ export default function AllProducts() {
                                     <p className="text-green-600 font-semibold mb-1">${product.price}</p>
                                     <p className="text-gray-600 mb-4">Available: {product.quantity}</p>
                                     <Link
-                                        to={`/products/${product._id}`}
+                                        to='/product-details'
                                         className="mt-auto text-center py-2 bg-primary text-white rounded-xl hover:bg-secondary transition"
                                     >
                                         View Details

@@ -7,9 +7,11 @@ import { Eye, EyeOff } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router";
 import UseAuth from "../../hooks/UseAuth";
 import Swal from "sweetalert2";
+import UseAxios from "../../hooks/UseAxios";
 
 export default function Login() {
     const { signInUser, signInGoogle } = UseAuth();
+    const axiosSecure = UseAxios();
     const navigate = useNavigate();
     const location = useLocation();
     const {
@@ -22,9 +24,8 @@ export default function Login() {
 
     const handleGoogleLogin = () => {
         signInGoogle()
-            .then(result => {
-                console.log(result.user)
-
+            .then(async (result) => {
+                const user = result.user;
                 Swal.fire({
                     title: "Login Successful!",
                     text: "Welcome back to TexTrack",
@@ -32,17 +33,29 @@ export default function Login() {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                // const userInfo = {
-                //     email: result.user.email,
-                //     name: result.user.displayName,
-                //     photoURL: result.user.photoURL
-                // }
+                // firebase jwt token--
+                const token = await user.getIdToken()
 
-                // axiosSecure.post('/users', userInfo)
-                //     .then(res => {
-                //         console.log('user data has been stored', res.data);
-                //         navigate(location.state || '/')
-                //     })
+                // console.log("JWT Token:", token);
+
+                // Send to the backend”
+                const userInfo = {
+                    email: user.email,
+                    name: user.displayName,
+                    photoURL: user.photoURL,
+                    role: "buyer",
+                    status: "pending",
+                }
+
+                // Send user info to backend
+                const res = await axiosSecure.post("/users", userInfo, {
+                    headers: { Authorization: `Bearer ${token}` },
+                });
+
+                console.log("User data stored:", res.data);
+
+                // Navigate after login
+                navigate(location.state?.from || "/");
 
             })
             .catch(error => {

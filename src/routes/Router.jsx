@@ -8,6 +8,10 @@ import ErrorPage from "../components/ErrorPage";
 import AboutUs from "../pages/AboutUs";
 import Contact from "../pages/Contact";
 import AllProducts from "../pages/products/AllProducts";
+import ProductDetails from "../pages/products/ProductDetails";
+import Dashboard from "../pages/admin/Dashboard";
+import ManageUsers from "../pages/admin/ManageUsers";
+import AllOrders from "../pages/admin/AllOrders";
 
 
 export const router = createBrowserRouter([
@@ -22,11 +26,17 @@ export const router = createBrowserRouter([
             }
         ]
     },
+    // {
+    //     path: '/all-products',
+    //     element: <AllProducts />,
+    //     loader: () => fetch('/public/division.json')
+    //         .then(res => res.json())
+    // },
     {
-        path: '/all-products',
-        element: <AllProducts />,
-        loader: () => fetch('/public/division.json')
-            .then(res => res.json())
+        path: '/product-details',
+        element: <ProductDetails />,
+        loader: ({ params }) =>
+            fetch(`/public/division/${params.id}.json`)
     },
     {
         path: '/',
@@ -51,5 +61,29 @@ export const router = createBrowserRouter([
         element: <Contact />,
         loader: () => fetch('/public/warehouses.json')
             .then(res => res.json())
-    }
+    },
+    {
+        path: "/dashboard",
+        element: <Dashboard />,
+        children: [
+            {
+                path: "users",
+                element: <ManageUsers />,
+            },
+            // {
+            //     path: "products",
+            //     element: <AllProducts />,
+            // },
+            {
+                path: 'all-products',
+                element: <AllProducts />,
+                loader: () => fetch('/public/division.json')
+                    .then(res => res.json())
+            },
+            {
+                path: "orders",
+                element: <AllOrders />,
+            },
+        ],
+    },
 ]);
